@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace CollectionsMasterConsoleUI
 {
@@ -13,18 +14,18 @@ namespace CollectionsMasterConsoleUI
 
             #region Arrays
             //TODO: Create an integer Array of size 50
-            
+            var numbers = new int[50];
 
             //TODO: Create a method to populate the number array with 50 random numbers that are between 0 and 50
-            
+            Populater(numbers);
 
             //TODO: Print the first number of the array
-
+            Console.WriteLine(numbers[0]);
             //TODO: Print the last number of the array            
-
+            Console.WriteLine(numbers[49]);
             Console.WriteLine("All Numbers Original");
             //UNCOMMENT this method to print out your numbers from arrays or lists
-            //NumberPrinter();
+            NumberPrinter(numbers);
             Console.WriteLine("-------------------");
 
             //TODO: Reverse the contents of the array and then print the array out to the console.
@@ -34,21 +35,37 @@ namespace CollectionsMasterConsoleUI
             */
 
             Console.WriteLine("All Numbers Reversed:");
-
+            Array.Reverse(numbers);
+            NumberPrinter(numbers);
             Console.WriteLine("---------REVERSE CUSTOM------------");
-
+            for (int i = numbers.Length - 1; i >= 0; i--)
+            {
+                Console.WriteLine(numbers[i]);
+            }
             Console.WriteLine("-------------------");
 
             //TODO: Create a method that will set numbers that are a multiple of 3 to zero then print to the console all numbers
             Console.WriteLine("Multiple of three = 0: ");
-            
+            for (int i = 0; i < 50; i++)
+            {
+                if (numbers[i] % 3 == 0)
+                {
+                    numbers[i] = 0;
+                    Console.WriteLine(0);
+                }
+                else
+                {
+                    Console.WriteLine(i);
+                }
+            }
 
             Console.WriteLine("-------------------");
 
             //TODO: Sort the array in order now
             /*      Hint: Array.____()      */
             Console.WriteLine("Sorted numbers:");
-            
+            Array.Sort(numbers);
+            NumberPrinter(numbers);
 
             Console.WriteLine("\n************End Arrays*************** \n");
             #endregion
@@ -126,6 +143,10 @@ namespace CollectionsMasterConsoleUI
         private static void Populater(int[] numbers)
         {
             Random rng = new Random();
+            for (int i = 0; i < 50; i++)
+            {
+                numbers[i] = rng.Next(0, 100);
+            }
 
         }        
 
