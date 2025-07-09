@@ -38,26 +38,15 @@ namespace CollectionsMasterConsoleUI
             Array.Reverse(numbers);
             NumberPrinter(numbers);
             Console.WriteLine("---------REVERSE CUSTOM------------");
-            for (int i = numbers.Length - 1; i >= 0; i--)
-            {
-                Console.WriteLine(numbers[i]);
-            }
+            
+            ReverseArray(numbers);
+            
             Console.WriteLine("-------------------");
 
             //TODO: Create a method that will set numbers that are a multiple of 3 to zero then print to the console all numbers
             Console.WriteLine("Multiple of three = 0: ");
-            for (int i = 0; i < 50; i++)
-            {
-                if (numbers[i] % 3 == 0)
-                {
-                    numbers[i] = 0;
-                    Console.WriteLine(0);
-                }
-                else
-                {
-                    Console.WriteLine(i);
-                }
-            }
+
+            ThreeKiller(numbers);
 
             Console.WriteLine("-------------------");
 
@@ -121,17 +110,55 @@ namespace CollectionsMasterConsoleUI
 
         private static void ThreeKiller(int[] numbers)
         {
-            
+            for (int i = 0; i < numbers.Length; i++)
+            {
+                if (numbers[i] % 3 == 0)
+                {
+                    numbers[i] = 0;
+                    Console.WriteLine(0);
+                }
+                else
+                {
+                    Console.WriteLine(numbers[i]);
+                }
+            }
         }
 
         private static void OddKiller(List<int> numberList)
         {
-            
+            for (int i = 0; i < numberList.Count; i++)
+            {
+                if (numberList[i] % 2 == 1)
+                {
+                    numberList[i] = 0;
+                    Console.WriteLine(0);
+                }
+                else
+                {
+                    Console.WriteLine(numberList[i]);
+                }
+            }
         }
 
         private static void NumberChecker(List<int> numberList, int searchNumber)
         {
-            
+            int counter = 0;
+            for (int i = 0; i < numberList.Count; i++)
+            {
+                if (numberList[i] == searchNumber)
+                {
+                    counter++;
+                }
+            }
+
+            if (counter > 0)
+            {
+                Console.WriteLine($"{searchNumber} is found {counter} times in the list.");
+            }
+            else
+            {
+                Console.WriteLine($"{searchNumber} is not found.");
+            }
         }
 
         private static void Populater(List<int> numberList)
@@ -152,7 +179,10 @@ namespace CollectionsMasterConsoleUI
 
         private static void ReverseArray(int[] array)
         {
-            
+            for (int i = array.Length - 1; i >= 0; i--)
+            {
+                Console.WriteLine(array[i]);
+            }
         }
 
         /// <summary>
