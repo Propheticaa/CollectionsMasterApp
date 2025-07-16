@@ -64,46 +64,49 @@ namespace CollectionsMasterConsoleUI
 
             /*   Set Up   */
             //TODO: Create an integer List
-            
+            List<int> intergers = new List<int>();
 
             //TODO: Print the capacity of the list to the console
-            
+            Console.WriteLine(intergers.Capacity);
 
             //TODO: Populate the List with 50 random numbers between 0 and 50 you will need a method for this            
-            
+            Populater(intergers);
 
             //TODO: Print the new capacity
-            
+            Console.WriteLine(intergers.Capacity);
 
             Console.WriteLine("---------------------");
 
             //TODO: Create a method that prints if a user number is present in the list
             //Remember: What if the user types "abc" accident your app should handle that!
             Console.WriteLine("What number will you search for in the number list?");
+            string number = Console.ReadLine();
+            NumberChecker(intergers, number);
             
             Console.WriteLine("-------------------");
 
             Console.WriteLine("All Numbers:");
             //UNCOMMENT this method to print out your numbers from arrays or lists
-            //NumberPrinter();
+            NumberPrinter(intergers);
             Console.WriteLine("-------------------");
 
 
             //TODO: Create a method that will remove all odd numbers from the list then print results
             Console.WriteLine("Evens Only!!");
-            
+            OddKiller(intergers);
             Console.WriteLine("------------------");
 
             //TODO: Sort the list then print results
             Console.WriteLine("Sorted Evens!!");
-            
+            intergers.Sort();
+            NumberPrinter(intergers);
             Console.WriteLine("------------------");
 
             //TODO: Convert the list to an array and store that into a variable
-            
+            int[] intergersArray = intergers.ToArray();
 
             //TODO: Clear the list
-            
+            intergers.Clear();
 
             #endregion
         }
@@ -130,8 +133,7 @@ namespace CollectionsMasterConsoleUI
             {
                 if (numberList[i] % 2 == 1)
                 {
-                    numberList[i] = 0;
-                    Console.WriteLine(0);
+                    numberList.RemoveAt(i);
                 }
                 else
                 {
@@ -140,30 +142,43 @@ namespace CollectionsMasterConsoleUI
             }
         }
 
-        private static void NumberChecker(List<int> numberList, int searchNumber)
+        private static void NumberChecker(List<int> numberList, string searchNumber)
         {
-            int counter = 0;
-            for (int i = 0; i < numberList.Count; i++)
+            if (!int.TryParse(searchNumber, out int result))
             {
-                if (numberList[i] == searchNumber)
-                {
-                    counter++;
-                }
-            }
-
-            if (counter > 0)
-            {
-                Console.WriteLine($"{searchNumber} is found {counter} times in the list.");
+                Console.WriteLine("Please enter a valid integer.");
+                return;
             }
             else
             {
-                Console.WriteLine($"{searchNumber} is not found.");
+                int counter = 0;
+                for (int i = 0; i < numberList.Count; i++)
+                {
+                    if (numberList[i] == result)
+                    {
+                        counter++;
+                    }
+                }
+
+                if (counter > 0)
+                {
+                    Console.WriteLine($"{searchNumber} is found {counter} times in the list.");
+                }
+                else
+                {
+                    Console.WriteLine($"{searchNumber} is not found.");
+                }
             }
+            
         }
 
         private static void Populater(List<int> numberList)
         {
             Random rng = new Random();
+            for (int i = 0; i < numberList.Count; i++)
+            {
+                numberList[i] = rng.Next(0, 100);
+            }
 
         }
 
