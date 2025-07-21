@@ -64,16 +64,17 @@ namespace CollectionsMasterConsoleUI
 
             /*   Set Up   */
             //TODO: Create an integer List
-            List<int> intergers = new List<int>();
+            List<int> integers = new List<int>();
 
             //TODO: Print the capacity of the list to the console
-            Console.WriteLine(intergers.Capacity);
+            Console.WriteLine(integers.Capacity);
 
             //TODO: Populate the List with 50 random numbers between 0 and 50 you will need a method for this            
-            Populater(intergers);
+            PopulaterList(integers, 50);
+            //Console.WriteLine(integers[1]);
 
             //TODO: Print the new capacity
-            Console.WriteLine(intergers.Capacity);
+            Console.WriteLine(integers.Capacity);
 
             Console.WriteLine("---------------------");
 
@@ -81,32 +82,33 @@ namespace CollectionsMasterConsoleUI
             //Remember: What if the user types "abc" accident your app should handle that!
             Console.WriteLine("What number will you search for in the number list?");
             string number = Console.ReadLine();
-            NumberChecker(intergers, number);
+            NumberChecker(integers, number);
             
             Console.WriteLine("-------------------");
 
             Console.WriteLine("All Numbers:");
             //UNCOMMENT this method to print out your numbers from arrays or lists
-            NumberPrinter(intergers);
+            NumberPrinter(integers);
             Console.WriteLine("-------------------");
 
 
             //TODO: Create a method that will remove all odd numbers from the list then print results
             Console.WriteLine("Evens Only!!");
-            OddKiller(intergers);
+            OddKiller(integers);
+            NumberPrinter(integers);
             Console.WriteLine("------------------");
 
             //TODO: Sort the list then print results
             Console.WriteLine("Sorted Evens!!");
-            intergers.Sort();
-            NumberPrinter(intergers);
+            integers.Sort();
+            NumberPrinter(integers);
             Console.WriteLine("------------------");
 
             //TODO: Convert the list to an array and store that into a variable
-            int[] intergersArray = intergers.ToArray();
+            int[] intergersArray = integers.ToArray();
 
             //TODO: Clear the list
-            intergers.Clear();
+            integers.Clear();
 
             #endregion
         }
@@ -172,12 +174,12 @@ namespace CollectionsMasterConsoleUI
             
         }
 
-        private static void Populater(List<int> numberList)
+        private static void PopulaterList(List<int> numberList, int amount)
         {
             Random rng = new Random();
-            for (int i = 0; i < numberList.Count; i++)
+            for (int i = 0; i < amount; i++)
             {
-                numberList[i] = rng.Next(0, 100);
+                numberList.Add(rng.Next(0, 50));
             }
 
         }
