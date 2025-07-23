@@ -47,6 +47,7 @@ namespace CollectionsMasterConsoleUI
             Console.WriteLine("Multiple of three = 0: ");
 
             ThreeKiller(numbers);
+            NumberPrinter(numbers);
 
             Console.WriteLine("-------------------");
 
@@ -120,26 +121,17 @@ namespace CollectionsMasterConsoleUI
                 if (numbers[i] % 3 == 0)
                 {
                     numbers[i] = 0;
-                    Console.WriteLine(0);
-                }
-                else
-                {
-                    Console.WriteLine(numbers[i]);
                 }
             }
         }
 
         private static void OddKiller(List<int> numberList)
         {
-            for (int i = 0; i < numberList.Count; i++)
+            for (int i = numberList.Count - 1; i >= 0; i--)
             {
                 if (numberList[i] % 2 == 1)
                 {
                     numberList.RemoveAt(i);
-                }
-                else
-                {
-                    Console.WriteLine(numberList[i]);
                 }
             }
         }
